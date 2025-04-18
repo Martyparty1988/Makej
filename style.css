@@ -3,6 +3,7 @@
     --primary-color: #0d6efd;
     --primary-light: #4d94ff;
     --primary-dark: #0a58ca;
+    --primary-color-rgb: 13, 110, 253;
     --secondary-color: #6c757d;
     --success-color: #28a745;
     --danger-color: #dc3545;
@@ -18,7 +19,7 @@
     --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     
     /* Fonty */
-    --font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-family: 'Nunito', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     
     /* Zaoblení a animace */
     --border-radius-sm: 0.25rem;
@@ -28,17 +29,16 @@
     --transition-speed: 0.3s;
     
     /* Časovač */
-    --timer-bg: #f0f5ff;
-    --timer-digit-bg: #ffffff;
-    --timer-digit-color: #0d6efd;
-    --timer-digit-shadow: 0 4px 10px rgba(13, 110, 253, 0.15);
-    --timer-separator-color: #0d6efd;
+    --timer-bg: #f2f6fa;
+    --timer-digit-bg: #f8f9fa;
+    --timer-digit-color: #343a40;
+    --timer-separator-color: #343a40;
     
     /* Tlačítka */
-    --btn-start-bg: #2ecc71;
-    --btn-start-hover: #27ae60;
-    --btn-stop-bg: #e74c3c;
-    --btn-stop-hover: #c0392b;
+    --btn-start-bg: #86e1a6;
+    --btn-start-hover: #6fd998;
+    --btn-stop-bg: #ffadad;
+    --btn-stop-hover: #ff9494;
 }
 
 /* Tmavý režim */
@@ -48,10 +48,9 @@ body.dark-mode {
     --card-bg: #393e46;
     --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
     --timer-bg: #2c3440;
-    --timer-digit-bg: #1f2730;
-    --timer-digit-color: #ffffff;
-    --timer-digit-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    --timer-separator-color: #ffffff;
+    --timer-digit-bg: #2a3038;
+    --timer-digit-color: #f8f9fa;
+    --timer-separator-color: #f8f9fa;
     --secondary-color: #9ca3af;
 }
 
@@ -90,7 +89,7 @@ ul {
 
 h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0.75rem;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.2;
 }
 
@@ -118,17 +117,12 @@ button {
     cursor: pointer;
 }
 
-textarea {
-    min-height: 80px;
-    resize: vertical;
-}
-
 /* Přepínač tmavého režimu */
 .theme-switch-wrapper {
     position: fixed;
     top: 10px;
-    right: 80px;
-    z-index: 1000;
+    right: 20px;
+    z-index: 99;
 }
 
 .theme-switch {
@@ -236,7 +230,6 @@ input:checked + .slider:before {
 .main-nav {
     flex-grow: 1;
     margin-left: 2rem;
-    z-index: 900;
 }
 
 .main-nav ul {
@@ -326,26 +319,16 @@ section.active {
     transform: translateY(-2px);
 }
 
-.card-header {
-    margin-bottom: 1.25rem;
-}
-
 .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--primary-color);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.25rem;
     padding-bottom: 0.75rem;
-}
-
-.card-title h2, .card-title h3 {
-    margin-bottom: 0;
-    font-weight: 600;
-}
-
-.card-title i {
-    font-size: 1.2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .dark-mode .card-title {
@@ -359,61 +342,54 @@ section.active {
     margin-bottom: 1.5rem;
 }
 
-/* NOVÝ MODERNÍ ČASOVAČ */
+/* Modern Timer */
 .timer-card {
+    padding: 0;
     overflow: hidden;
 }
 
-.timer-card-header {
-    margin-bottom: 1.25rem;
-}
-
-.timer-card-title {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--primary-color);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    padding-bottom: 0.75rem;
-}
-
-.timer-card-title h2 {
+.timer-card .card-title {
+    padding: 1.25rem 1.5rem;
     margin-bottom: 0;
-    font-weight: 600;
 }
 
-.timer-card-title i {
-    font-size: 1.2rem;
-}
-
+/* Nový moderní časovač */
 .modern-timer-container {
     background-color: var(--timer-bg);
-    padding: 1.5rem;
-    border-radius: var(--border-radius-lg);
-    margin-bottom: 1.5rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .person-selector {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.75rem;
+    padding: 0.8rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     position: relative;
 }
 
-.user-avatar {
-    width: 46px;
-    height: 46px;
+.dark-mode .person-selector {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.user-icon {
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     background-color: var(--primary-color);
-    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .user-info {
@@ -429,6 +405,7 @@ section.active {
 #selected-rate {
     font-size: 0.9rem;
     opacity: 0.8;
+    color: var(--text-color);
 }
 
 .user-dropdown {
@@ -440,25 +417,19 @@ section.active {
     border: none;
     color: var(--text-color);
     font-size: 1rem;
-    width: 36px;
-    height: 36px;
+    padding: 0.5rem;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .dropdown-toggle:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-.dark-mode .dropdown-toggle {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .dark-mode .dropdown-toggle:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .dropdown-menu {
@@ -466,7 +437,7 @@ section.active {
     top: 100%;
     right: 0;
     z-index: 10;
-    background-color: var(--card-bg);
+    background-color: white;
     border-radius: var(--border-radius-md);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -486,7 +457,11 @@ section.active {
 }
 
 .dropdown-item:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: var(--light-color);
+}
+
+.dark-mode .dropdown-menu {
+    background-color: var(--dark-color);
 }
 
 .dark-mode .dropdown-item:hover {
@@ -497,90 +472,103 @@ section.active {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.2rem;
+    background-color: white;
+    border-radius: var(--border-radius-lg);
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.timer-digits {
+.dark-mode .timer-display-container {
+    background-color: #343a40;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.timer-display {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0.35rem;
 }
 
-.digit-group {
+.timer-digit-group {
     display: flex;
-    gap: 8px;
+    gap: 0.2rem;
 }
 
-.digit {
-    width: 60px;
-    height: 80px;
+.timer-digit {
     background-color: var(--timer-digit-bg);
     color: var(--timer-digit-color);
-    font-size: 3rem;
-    font-weight: 700;
+    font-family: 'Nunito', 'Segoe UI', sans-serif;
+    font-size: 3.2rem;
+    font-weight: 600;
+    width: 3.5rem;
+    height: 4.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--timer-digit-shadow);
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06), inset 0 -2px 0 rgba(0, 0, 0, 0.1);
     position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
-.timer-running .digit {
-    animation: pulseTimer 2s infinite alternate;
+.dark-mode .timer-digit {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.25);
+}
+
+.timer-running .timer-digit {
+    animation: pulseTimer 1.5s infinite alternate;
 }
 
 @keyframes pulseTimer {
     0% {
-        box-shadow: var(--timer-digit-shadow);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06), inset 0 -2px 0 rgba(0, 0, 0, 0.1);
     }
     100% {
-        box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
+        box-shadow: 0 4px 8px rgba(var(--primary-color-rgb), 0.3), inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+    }
+}
+
+.dark-mode .timer-running .timer-digit {
+    animation: pulseTimerDark 1.5s infinite alternate;
+}
+
+@keyframes pulseTimerDark {
+    0% {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.25);
+    }
+    100% {
+        box-shadow: 0 4px 8px rgba(var(--primary-color-rgb), 0.5), inset 0 -2px 0 rgba(0, 0, 0, 0.25);
     }
 }
 
 .timer-separator {
     color: var(--timer-separator-color);
-    font-size: 3rem;
-    font-weight: 700;
-    margin: 0 4px;
-    opacity: 0.8;
-}
-
-.timer-running .timer-separator {
-    animation: blinkSeparator 1s infinite;
-}
-
-@keyframes blinkSeparator {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.3;
-    }
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 0 0.1rem;
 }
 
 .earnings-display {
     display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
+    gap: 1.2rem;
+    align-items: center;
     justify-content: center;
-    margin-top: 0.5rem;
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: var(--border-radius-md);
+    background-color: #f8f9fa;
+    flex-wrap: wrap;
 }
 
-.earnings-item {
-    text-align: center;
+.dark-mode .earnings-display {
+    background-color: #2a3038;
 }
 
-.earnings-label {
-    font-size: 0.9rem;
-    color: var(--secondary-color);
-    margin-bottom: 0.25rem;
-}
-
-.earnings-value {
-    font-size: 1.5rem;
+#current-earnings, #current-deduction {
+    font-size: 1.3rem;
     font-weight: 600;
     color: var(--text-color);
 }
@@ -590,33 +578,39 @@ section.active {
 }
 
 #current-deduction {
-    color: var(--primary-color);
+    color: var(--warning-color);
+}
+
+.earnings-separator {
+    font-size: 0.95rem;
+    color: var(--secondary-color);
 }
 
 .timer-controls {
     display: flex;
     gap: 1rem;
     justify-content: center;
+    width: 100%;
 }
 
 .timer-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
-    padding: 0.75rem 2rem;
+    gap: 0.5rem;
+    padding: 0.85rem 2rem;
     font-size: 1rem;
     font-weight: 600;
     border: none;
     border-radius: var(--border-radius-md);
     transition: all var(--transition-speed);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     min-width: 120px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .start-btn {
     background-color: var(--btn-start-bg);
-    color: white;
+    color: #155724;
 }
 
 .start-btn:hover:not(:disabled) {
@@ -627,7 +621,7 @@ section.active {
 
 .stop-btn {
     background-color: var(--btn-stop-bg);
-    color: white;
+    color: #721c24;
 }
 
 .stop-btn:hover:not(:disabled) {
@@ -637,25 +631,28 @@ section.active {
 }
 
 .timer-btn:disabled {
-    opacity: 0.5;
+    opacity: 0.6;
     cursor: not-allowed;
     transform: none;
     box-shadow: none;
 }
 
+.timer-btn:active:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .task-selection {
     padding: 1.5rem;
     background-color: var(--card-bg);
-    border-radius: var(--border-radius-lg);
+    border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
 .task-selection label {
-    font-weight: 500;
-    margin-bottom: 0.25rem;
-    display: block;
+    font-weight: 600;
     color: var(--text-color);
 }
 
@@ -917,7 +914,6 @@ section.active {
     width: 20px;
     background-color: #eee;
     border-radius: 50%;
-    transition: all var(--transition-speed);
 }
 
 .radio-option:hover input ~ .radio-checkmark {
@@ -1232,59 +1228,6 @@ tbody tr:hover {
     position: relative;
 }
 
-/* Graf - loading a error stavy */
-.chart-loading, .chart-error {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(255, 255, 255, 0.9);
-    z-index: 20;
-    border-radius: var(--border-radius-md);
-    display: none;
-}
-
-.dark-mode .chart-loading, .dark-mode .chart-error {
-    background-color: rgba(34, 40, 49, 0.9);
-}
-
-.loading-spinner {
-    width: 40px;
-    height: 40px;
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    border-left-color: var(--primary-color);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-bottom: 1rem;
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.chart-error {
-    color: var(--danger-color);
-}
-
-.chart-error i {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.chart-error p {
-    margin-bottom: 1rem;
-}
-
 /* User settings */
 .profile-settings {
     display: grid;
@@ -1390,21 +1333,13 @@ tbody tr:hover {
 
 /* Categories management */
 .categories-management {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
 .category-section {
-    margin-bottom: 2rem;
-}
-
-.category-section h4 {
-    font-weight: 600;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    flex: 1;
 }
 
 .category-section ul {
@@ -1413,8 +1348,6 @@ tbody tr:hover {
     margin-bottom: 1.5rem;
     min-height: 100px;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    max-height: 300px;
-    overflow-y: auto;
 }
 
 .dark-mode .category-section ul {
@@ -1590,18 +1523,18 @@ footer {
 
 /* Responsivní design */
 @media (max-width: 992px) {
-    .digit {
-        width: 50px;
-        height: 70px;
-        font-size: 2.5rem;
+    .timer-digit {
+        font-size: 2.6rem;
+        width: 3rem;
+        height: 4rem;
     }
     
     .timer-separator {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
     
-    .earnings-value {
-        font-size: 1.25rem;
+    #current-earnings, #current-deduction {
+        font-size: 1.2rem;
     }
 }
 
@@ -1642,19 +1575,14 @@ footer {
         gap: 0.5rem;
     }
 
-    .digit {
-        width: 40px;
-        height: 60px;
-        font-size: 2rem;
+    .timer-digit {
+        font-size: 2.2rem;
+        width: 2.6rem;
+        height: 3.5rem;
     }
     
     .timer-separator {
-        font-size: 2rem;
-    }
-    
-    .earnings-display {
-        flex-direction: column;
-        gap: 1rem;
+        font-size: 1.8rem;
     }
     
     .timer-controls {
@@ -1665,8 +1593,9 @@ footer {
         width: 100%;
     }
     
-    .theme-switch-wrapper {
-        right: 70px;
+    .earnings-display {
+        flex-direction: column;
+        gap: 0.5rem;
     }
 }
 
@@ -1686,21 +1615,25 @@ footer {
     .card {
         padding: 1rem;
     }
-
+    
     .modern-timer-container {
-        padding: 1rem;
+        padding: 1.2rem;
     }
-
-    .digit {
-        width: 30px;
-        height: 46px;
-        font-size: 1.5rem;
+    
+    .person-selector {
+        padding: 0.6rem;
+    }
+    
+    .timer-digit {
+        font-size: 1.8rem;
+        width: 2.2rem;
+        height: 3rem;
     }
     
     .timer-separator {
         font-size: 1.5rem;
     }
-    
+
     .stats-period-selector {
         flex-wrap: wrap;
     }
@@ -1709,7 +1642,7 @@ footer {
         flex: 1;
     }
     
-    .theme-switch-wrapper {
-        right: 60px;
+    #current-earnings, #current-deduction {
+        font-size: 1.1rem;
     }
 }
