@@ -5,9 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Pracovní výkazy & Finance</title>
         <link rel="stylesheet" href="style.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -18,6 +15,10 @@
         <link
             rel="icon"
             href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⏱️</text></svg>"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
         />
     </head>
     <body>
@@ -89,18 +90,12 @@
         <main>
             <section id="dochazka" class="active">
                 <div class="dashboard-cards">
-                    <!-- NOVÝ MODERNÍ ČASOVAČ -->
                     <div class="card timer-card">
-                        <div class="timer-card-header">
-                            <div class="timer-card-title">
-                                <i class="fas fa-clock"></i>
-                                <h2>Časovač práce</h2>
-                            </div>
-                        </div>
+                        <h2 class="card-title">Přehled dne</h2>
                         
                         <div class="modern-timer-container">
                             <div class="person-selector">
-                                <div class="user-avatar">
+                                <div class="user-icon">
                                     <i class="fas fa-user"></i>
                                 </div>
                                 <div class="user-info">
@@ -117,49 +112,44 @@
                             </div>
                             
                             <div class="timer-display-container">
-                                <div class="timer-digits">
-                                    <div class="digit-group">
-                                        <div class="digit" id="hours-tens">0</div>
-                                        <div class="digit" id="hours-ones">0</div>
+                                <div class="timer-display">
+                                    <div class="timer-digit-group">
+                                        <div class="timer-digit" id="hours-tens">0</div>
+                                        <div class="timer-digit" id="hours-ones">0</div>
                                     </div>
                                     <div class="timer-separator">:</div>
-                                    <div class="digit-group">
-                                        <div class="digit" id="minutes-tens">0</div>
-                                        <div class="digit" id="minutes-ones">0</div>
+                                    <div class="timer-digit-group">
+                                        <div class="timer-digit" id="minutes-tens">0</div>
+                                        <div class="timer-digit" id="minutes-ones">0</div>
                                     </div>
                                     <div class="timer-separator">:</div>
-                                    <div class="digit-group">
-                                        <div class="digit" id="seconds-tens">0</div>
-                                        <div class="digit" id="seconds-ones">0</div>
+                                    <div class="timer-digit-group">
+                                        <div class="timer-digit" id="seconds-tens">0</div>
+                                        <div class="timer-digit" id="seconds-ones">0</div>
                                     </div>
                                 </div>
                                 
                                 <div class="earnings-display">
-                                    <div class="earnings-item">
-                                        <div class="earnings-label">Výdělek:</div>
-                                        <div class="earnings-value" id="current-earnings">0 Kč</div>
-                                    </div>
-                                    <div class="earnings-item">
-                                        <div class="earnings-label">Srážka:</div>
-                                        <div class="earnings-value" id="current-deduction">0 Kč</div>
-                                    </div>
+                                    <span id="current-earnings">0 Kč</span>
+                                    <span class="earnings-separator">Srážka:</span>
+                                    <span id="current-deduction">0 Kč</span>
                                 </div>
-                            </div>
-                            
-                            <div class="timer-controls">
-                                <button id="timer-start" class="timer-btn start-btn">
-                                    <i class="fas fa-play"></i>
-                                    <span>Start</span>
-                                </button>
-                                <button id="timer-stop" class="timer-btn stop-btn" disabled>
-                                    <i class="fas fa-stop"></i>
-                                    <span>Stop</span>
-                                </button>
+                                
+                                <div class="timer-controls">
+                                    <button id="timer-start" class="timer-btn start-btn">
+                                        <i class="fas fa-play"></i>
+                                        <span>Start</span>
+                                    </button>
+                                    <button id="timer-stop" class="timer-btn stop-btn" disabled>
+                                        <i class="fas fa-stop"></i>
+                                        <span>Stop</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
                         <div class="task-selection">
-                            <label for="task-select">Úkol:</label>
+                            <label for="task-select">Úkol</label>
                             <div class="custom-select">
                                 <select id="task-select" required>
                                     <option value="">-- Vyberte úkol --</option>
@@ -173,20 +163,13 @@
                                     <i class="fas fa-chevron-down"></i>
                                 </div>
                             </div>
-                            <label for="task-subcategory">Podkategorie:</label>
-                            <input type="text" id="task-subcategory" placeholder="Nepovinné" />
-                            <label for="task-note">Poznámka:</label>
+                            <input type="text" id="task-subcategory" placeholder="Podkategorie (volitelné)" />
                             <textarea id="task-note" placeholder="Poznámka k úkolu (volitelná)"></textarea>
                         </div>
                     </div>
                     
                     <div class="card summary-card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-calendar-day"></i>
-                                <h2>Dnešní souhrn</h2>
-                            </div>
-                        </div>
+                        <h2 class="card-title">Dnešní souhrn</h2>
                         <div id="today-summary" class="summary-content">
                             <div class="summary-item">
                                 <div class="summary-label">Celkem odpracováno:</div>
@@ -209,12 +192,7 @@
                 </div>
 
                 <div class="manual-entry card">
-                    <div class="card-header">
-                        <div class="card-title">
-                            <i class="fas fa-edit"></i>
-                            <h3>Ruční zadání záznamu</h3>
-                        </div>
-                    </div>
+                    <h3 class="card-title"><i class="fas fa-edit"></i> Ruční zadání záznamu</h3>
                     <form id="manual-entry-form">
                         <input type="hidden" id="edit-log-id" value="" />
                         <div class="form-row">
@@ -306,12 +284,7 @@
                 </div>
 
                 <div class="recent-logs card">
-                    <div class="card-header">
-                        <div class="card-title">
-                            <i class="fas fa-history"></i>
-                            <h3>Poslední záznamy</h3>
-                        </div>
-                    </div>
+                    <h3 class="card-title"><i class="fas fa-history"></i> Poslední záznamy</h3>
                     <div class="table-container">
                         <table id="recent-logs-table">
                             <thead>
@@ -338,12 +311,7 @@
             <section id="finance">
                 <div class="dashboard-cards">
                     <div class="card finance-summary-card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-wallet"></i>
-                                <h2>Finanční přehled</h2>
-                            </div>
-                        </div>
+                        <h2 class="card-title">Finanční přehled</h2>
                         <div class="finance-summary">
                             <div class="balance-circle">
                                 <svg viewBox="0 0 36 36" class="circular-chart">
@@ -395,12 +363,7 @@
                     </div>
                     
                     <div class="card finance-actions-card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-bolt"></i>
-                                <h2>Rychlé akce</h2>
-                            </div>
-                        </div>
+                        <h2 class="card-title">Rychlé akce</h2>
                         <div class="action-buttons">
                             <button id="add-income-btn" class="action-btn income-btn">
                                 <i class="fas fa-plus"></i>
@@ -423,12 +386,7 @@
                 </div>
 
                 <div class="finance-entry card">
-                    <div class="card-header">
-                        <div class="card-title">
-                            <i class="fas fa-file-invoice-dollar"></i>
-                            <h3>Přidat příjem/výdaj</h3>
-                        </div>
-                    </div>
+                    <h3 class="card-title"><i class="fas fa-file-invoice-dollar"></i> Přidat příjem/výdaj</h3>
                     <form id="finance-form">
                         <input type="hidden" id="edit-finance-id" value="" />
                         <div class="form-row">
@@ -503,12 +461,7 @@
                 </div>
 
                 <div class="finance-logs card">
-                    <div class="card-header">
-                        <div class="card-title">
-                            <i class="fas fa-exchange-alt"></i>
-                            <h3>Přehled financí</h3>
-                        </div>
-                    </div>
+                    <h3 class="card-title"><i class="fas fa-exchange-alt"></i> Přehled financí</h3>
                     <div class="table-container">
                         <table>
                             <thead>
@@ -535,12 +488,7 @@
             <section id="srazky">
                 <div class="dashboard-cards">
                     <div class="card deductions-overview-card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-chart-pie"></i>
-                                <h2>Přehled srážek a dluhů</h2>
-                            </div>
-                        </div>
+                        <h2 class="card-title">Přehled srážek a dluhů</h2>
                         <div class="deductions-summary">
                             <div class="summary-chart">
                                 <canvas id="deductions-chart"></canvas>
@@ -563,12 +511,7 @@
                     </div>
                     
                     <div class="card rent-status-card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-home"></i>
-                                <h2>Stav nájmu</h2>
-                            </div>
-                        </div>
+                        <h2 class="card-title">Stav nájmu</h2>
                         <div class="rent-details">
                             <div class="rent-amount">
                                 <div class="rent-label">Měsíční částka:</div>
@@ -593,12 +536,7 @@
                 </div>
 
                 <div class="deductions-summary card">
-                    <div class="card-header">
-                        <div class="card-title">
-                            <i class="fas fa-percentage"></i>
-                            <h3>Přehled srážek dle měsíce</h3>
-                        </div>
-                    </div>
+                    <h3 class="card-title"><i class="fas fa-percentage"></i> Přehled srážek dle měsíce</h3>
                     <div class="info-box">
                         <p>
                             <i class="fas fa-info-circle"></i> Srážky se
@@ -629,12 +567,7 @@
                 </div>
 
                 <div class="debts-overview card">
-                    <div class="card-header">
-                        <div class="card-title">
-                            <i class="fas fa-hand-holding-usd"></i>
-                            <h3>Dluhy a splátky</h3>
-                        </div>
-                    </div>
+                    <h3 class="card-title"><i class="fas fa-hand-holding-usd"></i> Dluhy a splátky</h3>
                     <div id="debts-list">
                         <div class="empty-placeholder">
                             Žádné dluhy k zobrazení. Přidejte dluh níže.
@@ -643,12 +576,7 @@
                 </div>
 
                 <div class="debt-entry card">
-                    <div class="card-header">
-                        <div class="card-title">
-                            <i class="fas fa-file-invoice-dollar"></i>
-                            <h3>Přidat/Upravit dluh</h3>
-                        </div>
-                    </div>
+                    <h3 class="card-title"><i class="fas fa-file-invoice-dollar"></i> Přidat/Upravit dluh</h3>
                     <form id="debt-form">
                         <input type="hidden" id="edit-debt-id" value="" />
                         <div class="form-row">
@@ -711,12 +639,7 @@
                 </div>
 
                 <div class="payment-entry card">
-                    <div class="card-header">
-                        <div class="card-title">
-                            <i class="fas fa-money-check-alt"></i>
-                            <h3>Přidat splátku</h3>
-                        </div>
-                    </div>
+                    <h3 class="card-title"><i class="fas fa-money-check-alt"></i> Přidat splátku</h3>
                     <form id="payment-form">
                         <div class="form-row">
                             <div class="form-group">
@@ -760,12 +683,7 @@
             <section id="prehledy">
                 <div class="dashboard-cards">
                     <div class="card stats-overview-card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-chart-line"></i>
-                                <h2>Statistiky</h2>
-                            </div>
-                        </div>
+                        <h2 class="card-title">Statistiky</h2>
                         <div class="stats-overview">
                             <div class="stats-period-selector">
                                 <button class="period-btn active" data-period="week">Týden</button>
@@ -774,48 +692,20 @@
                             </div>
                             <div class="stats-chart-container">
                                 <canvas id="stats-chart"></canvas>
-                                <div id="stats-loading" class="chart-loading">
-                                    <div class="loading-spinner"></div>
-                                    <p>Načítám data...</p>
-                                </div>
-                                <div id="stats-error" class="chart-error">
-                                    <i class="fas fa-exclamation-circle"></i>
-                                    <p>Chyba při načítání grafu.</p>
-                                    <button id="retry-stats-btn" class="btn primary-btn">Zkusit znovu</button>
-                                </div>
                             </div>
                         </div>
                     </div>
                     
                     <div class="card tasks-distribution-card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-tasks"></i>
-                                <h2>Rozdělení úkolů</h2>
-                            </div>
-                        </div>
+                        <h2 class="card-title">Rozdělení úkolů</h2>
                         <div class="tasks-chart-container">
                             <canvas id="tasks-chart"></canvas>
-                            <div id="tasks-loading" class="chart-loading">
-                                <div class="loading-spinner"></div>
-                                <p>Načítám data...</p>
-                            </div>
-                            <div id="tasks-error" class="chart-error">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <p>Chyba při načítání grafu.</p>
-                                <button id="retry-tasks-btn" class="btn primary-btn">Zkusit znovu</button>
-                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="filters-container card">
-                    <div class="card-header">
-                        <div class="card-title">
-                            <i class="fas fa-filter"></i>
-                            <h3>Filtry pracovních záznamů</h3>
-                        </div>
-                    </div>
+                    <h3 class="card-title"><i class="fas fa-filter"></i> Filtry pracovních záznamů</h3>
                     <form id="filters-form">
                         <div class="form-row">
                             <div class="form-group">
@@ -863,12 +753,7 @@
                 </div>
 
                 <div class="work-logs card">
-                    <div class="card-header">
-                        <div class="card-title">
-                            <i class="fas fa-list-alt"></i>
-                            <h3>Přehled pracovních záznamů</h3>
-                        </div>
-                    </div>
+                    <h3 class="card-title"><i class="fas fa-list-alt"></i> Přehled pracovních záznamů</h3>
                     <div id="work-logs-accordion" class="accordion-container">
                         <div class="empty-placeholder">
                             Žádné záznamy k zobrazení. Zkuste změnit filtry nebo přidejte záznam v sekci Docházka.
@@ -877,12 +762,7 @@
                 </div>
 
                 <div class="export-actions card">
-                    <div class="card-header">
-                        <div class="card-title">
-                            <i class="fas fa-file-export"></i>
-                            <h3>Export dat</h3>
-                        </div>
-                    </div>
+                    <h3 class="card-title"><i class="fas fa-file-export"></i> Export dat</h3>
                     <div class="export-buttons">
                         <button id="export-work-logs" class="export-btn">
                             <i class="fas fa-clock"></i> Export záznamů (CSV)
@@ -903,12 +783,7 @@
             <section id="nastaveni">
                 <div class="dashboard-cards">
                     <div class="card profile-card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-user-circle"></i>
-                                <h2>Profil</h2>
-                            </div>
-                        </div>
+                        <h2 class="card-title">Profil</h2>
                         <div class="profile-settings">
                             <div class="user-settings">
                                 <h4>Maru</h4>
@@ -936,12 +811,7 @@
                     </div>
                     
                     <div class="card theme-card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-paint-brush"></i>
-                                <h2>Nastavení vzhledu</h2>
-                            </div>
-                        </div>
+                        <h2 class="card-title">Nastavení vzhledu</h2>
                         <div class="theme-settings">
                             <div class="theme-option">
                                 <label class="switch">
@@ -961,14 +831,8 @@
                 </div>
 
                 <div class="categories-management card">
-                    <div class="card-header">
-                        <div class="card-title">
-                            <i class="fas fa-list"></i>
-                            <h3>Správa kategorií</h3>
-                        </div>
-                    </div>
                     <div class="category-section">
-                        <h4><i class="fas fa-tasks"></i> Kategorie úkolů</h4>
+                        <h3 class="card-title"><i class="fas fa-tasks"></i> Kategorie úkolů</h3>
                         <ul id="task-categories-list">
                             <li class="empty-placeholder">Žádné kategorie úkolů.</li>
                         </ul>
@@ -981,7 +845,7 @@
                     </div>
 
                     <div class="category-section">
-                        <h4><i class="fas fa-wallet"></i> Kategorie výdajů</h4>
+                        <h3 class="card-title"><i class="fas fa-wallet"></i> Kategorie výdajů</h3>
                         <ul id="expense-categories-list">
                             <li class="empty-placeholder">Žádné kategorie výdajů.</li>
                         </ul>
@@ -995,12 +859,7 @@
                 </div>
 
                 <div class="rent-settings card">
-                    <div class="card-header">
-                        <div class="card-title">
-                            <i class="fas fa-home"></i>
-                            <h3>Nastavení nájmu</h3>
-                        </div>
-                    </div>
+                    <h3 class="card-title"><i class="fas fa-home"></i> Nastavení nájmu</h3>
                     <div class="info-box">
                         <p>
                             <i class="fas fa-info-circle"></i> Nájem se automaticky generuje 1. den v měsíci. Pokud není dostatek peněz ve společném rozpočtu, vytvoří se dluh.
@@ -1028,12 +887,7 @@
                 </div>
 
                 <div class="data-management card">
-                    <div class="card-header">
-                        <div class="card-title">
-                            <i class="fas fa-database"></i>
-                            <h3>Správa dat</h3>
-                        </div>
-                    </div>
+                    <h3 class="card-title"><i class="fas fa-database"></i> Správa dat</h3>
                     <div class="form-actions">
                         <button id="backup-data" class="btn action-btn">
                             <i class="fas fa-download"></i> Zálohovat data (JSON)
