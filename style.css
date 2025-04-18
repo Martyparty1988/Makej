@@ -196,7 +196,7 @@ section.active {
     background-color: var(--card-bg);
     border-radius: var(--border-radius-lg);
     box-shadow: var(--card-shadow);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: 1rem;
     overflow: hidden;
     transition: box-shadow var(--transition-speed);
 }
@@ -554,27 +554,22 @@ section.active {
 .form-row {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-sm);
-    padding: 0 var(--spacing-md);
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
 }
 
 .form-group {
-    flex: 1 1 150px;
+    flex: 1 1 200px;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-xs);
-}
-
-.form-group label {
-    font-weight: 600;
-    font-size: var(--font-size-xs);
+    gap: 0.5rem;
 }
 
 .form-actions {
-    padding: 0 var(--spacing-md) var(--spacing-md);
+    padding: 0 1rem 1rem;
     display: flex;
-    gap: var(--spacing-sm);
+    gap: 0.5rem;
 }
 
 /* Input with icon */
@@ -1639,3 +1634,216 @@ html {
 .theme-switch-wrapper {
     display: none !important;
 }
+
+# Podrobný návod na implementaci změn - krok za krokem
+
+Chápu, že potřebujete přesný postup, kam a jak vložit kód. Zde je detailní průvodce implementací:
+
+## 1. ÚPRAVY V CSS SOUBORU (style.css)
+
+### Krok 1: Přidejte nové styly na konec souboru
+Otevřete soubor `style.css` a přejděte na úplný konec souboru. Poté přidejte následující kód:
+
+```css
+/* ===== ZAČÁTEK NOVÝCH STYLŮ ===== */
+
+/* Úprava mezer mezi formulářovými poli */
+.task-selection {
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Maximálně 8px mezera */
+    background-color: rgba(0, 0, 0, 0.01);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    text-align: left;
+}
+
+.dark-mode .task-selection {
+    background-color: rgba(255, 255, 255, 0.01);
+    border-top-color: rgba(255, 255, 255, 0.05);
+}
+
+.task-selection select,
+.task-selection input,
+.task-selection textarea {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+/* Stylování dlaždic - sjednocení */
+.card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: box-shadow var(--transition-speed);
+    text-align: left;
+}
+
+.dark-mode .card {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+    padding: 12px 16px;
+    margin: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: var(--font-size-lg);
+}
+
+/* Nový přepínač Maru/Marty - radio-style buttons */
+.worker-selector {
+    display: flex;
+    padding: 12px 16px;
+    background-color: var(--card-bg);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.worker-options {
+    display: flex;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.dark-mode .worker-options {
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+.worker-option {
+    flex: 1;
+    min-height: 44px; /* Minimální výška pro dotykové ovládání */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    padding: 8px 0;
+    position: relative;
+}
+
+.worker-option input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.worker-option-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.worker-option-label {
+    font-weight: 600;
+}
+
+.worker-option-rate {
+    font-size: var(--font-size-xs);
+    opacity: 0.8;
+}
+
+.worker-option input:checked + .worker-option-content {
+    color: white;
+}
+
+.worker-option.maru {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.worker-option.maru input:checked ~ .worker-background {
+    background-color: var(--primary-color);
+}
+
+.worker-option.marty {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.worker-option.marty input:checked ~ .worker-background {
+    background-color: var(--primary-dark);
+}
+
+.worker-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: background-color 0.2s ease;
+}
+
+/* Pořadí dlaždic a obsahu */
+.dashboard-order {
+    display: flex;
+    flex-direction: column;
+}
+
+.order-timer {
+    order: 1;
+}
+
+.order-budget {
+    order: 2;
+}
+
+.order-manual {
+    order: 3;
+}
+
+.order-summary {
+    order: 4;
+}
+
+.order-recent {
+    order: 5;
+}
+
+/* Úpravy formulářů */
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+    padding: 0 16px;
+}
+
+.form-group {
+    flex: 1 1 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-actions {
+    padding: 0 16px 16px;
+    display: flex;
+    gap: 8px;
+}
+
+/* Sjednocení padding v kartách */
+.summary-grid,
+.budget-display,
+.budget-actions,
+.form-container {
+    padding: 12px 16px;
+}
+
+/* Tlačítka - jednotná výška */
+.btn {
+    min-height: 44px; /* Minimální výška pro dotykové ovládání */
+    padding: 0 16px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all var(--transition-speed);
+    border: 1px solid transparent;
+    font-weight: 600;
+}
+
+/* ===== KONEC NOVÝCH STYLŮ ===== */
