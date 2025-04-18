@@ -18,7 +18,7 @@
     --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     
     /* Fonty */
-    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     
     /* Zaoblení a animace */
     --border-radius-sm: 0.25rem;
@@ -28,10 +28,11 @@
     --transition-speed: 0.3s;
     
     /* Časovač */
-    --timer-bg: #3a4a5c;
-    --timer-digit-bg: #2a3744;
-    --timer-digit-color: #ffffff;
-    --timer-separator-color: #ffffff;
+    --timer-bg: #f0f5ff;
+    --timer-digit-bg: #ffffff;
+    --timer-digit-color: #0d6efd;
+    --timer-digit-shadow: 0 4px 10px rgba(13, 110, 253, 0.15);
+    --timer-separator-color: #0d6efd;
     
     /* Tlačítka */
     --btn-start-bg: #2ecc71;
@@ -48,6 +49,9 @@ body.dark-mode {
     --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
     --timer-bg: #2c3440;
     --timer-digit-bg: #1f2730;
+    --timer-digit-color: #ffffff;
+    --timer-digit-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    --timer-separator-color: #ffffff;
     --secondary-color: #9ca3af;
 }
 
@@ -86,7 +90,7 @@ ul {
 
 h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0.75rem;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1.2;
 }
 
@@ -114,11 +118,16 @@ button {
     cursor: pointer;
 }
 
+textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
 /* Přepínač tmavého režimu */
 .theme-switch-wrapper {
     position: fixed;
     top: 10px;
-    right: 20px;
+    right: 80px;
     z-index: 1000;
 }
 
@@ -227,6 +236,7 @@ input:checked + .slider:before {
 .main-nav {
     flex-grow: 1;
     margin-left: 2rem;
+    z-index: 900;
 }
 
 .main-nav ul {
@@ -316,16 +326,26 @@ section.active {
     transform: translateY(-2px);
 }
 
+.card-header {
+    margin-bottom: 1.25rem;
+}
+
 .card-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--primary-color);
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-bottom: 1.25rem;
-    padding-bottom: 0.75rem;
+    color: var(--primary-color);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 0.75rem;
+}
+
+.card-title h2, .card-title h3 {
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+.card-title i {
+    font-size: 1.2rem;
 }
 
 .dark-mode .card-title {
@@ -339,43 +359,61 @@ section.active {
     margin-bottom: 1.5rem;
 }
 
-/* Modern Timer */
+/* NOVÝ MODERNÍ ČASOVAČ */
 .timer-card {
-    padding: 0;
     overflow: hidden;
 }
 
-.timer-card .card-title {
-    padding: 1.25rem 1.5rem;
+.timer-card-header {
+    margin-bottom: 1.25rem;
+}
+
+.timer-card-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 0.75rem;
+}
+
+.timer-card-title h2 {
     margin-bottom: 0;
+    font-weight: 600;
+}
+
+.timer-card-title i {
+    font-size: 1.2rem;
 }
 
 .modern-timer-container {
     background-color: var(--timer-bg);
-    padding: 2rem;
+    padding: 1.5rem;
+    border-radius: var(--border-radius-lg);
+    margin-bottom: 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
 }
 
 .person-selector {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    color: white;
+    gap: 1rem;
     position: relative;
 }
 
-.user-icon {
-    width: 40px;
-    height: 40px;
+.user-avatar {
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: var(--primary-color);
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .user-info {
@@ -385,6 +423,7 @@ section.active {
 #selected-person {
     font-size: 1.25rem;
     font-weight: 600;
+    color: var(--text-color);
 }
 
 #selected-rate {
@@ -399,17 +438,27 @@ section.active {
 .dropdown-toggle {
     background: none;
     border: none;
-    color: white;
+    color: var(--text-color);
     font-size: 1rem;
-    padding: 0.5rem;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .dropdown-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .dropdown-toggle {
     background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .dropdown-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .dropdown-menu {
@@ -417,7 +466,7 @@ section.active {
     top: 100%;
     right: 0;
     z-index: 10;
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: var(--border-radius-md);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -437,11 +486,7 @@ section.active {
 }
 
 .dropdown-item:hover {
-    background-color: var(--light-color);
-}
-
-.dark-mode .dropdown-menu {
-    background-color: var(--dark-color);
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .dark-mode .dropdown-item:hover {
@@ -452,47 +497,46 @@ section.active {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
-.timer-display {
+.timer-digits {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
 }
 
-.timer-digit-group {
+.digit-group {
     display: flex;
-    gap: 0.25rem;
+    gap: 8px;
 }
 
-.timer-digit {
+.digit {
+    width: 60px;
+    height: 80px;
     background-color: var(--timer-digit-bg);
     color: var(--timer-digit-color);
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 700;
-    width: 4rem;
-    height: 5rem;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: var(--border-radius-md);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--timer-digit-shadow);
     position: relative;
-    overflow: hidden;
 }
 
-.timer-running .timer-digit {
-    animation: pulseTimer 1s infinite alternate;
+.timer-running .digit {
+    animation: pulseTimer 2s infinite alternate;
 }
 
 @keyframes pulseTimer {
     0% {
-        box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+        box-shadow: var(--timer-digit-shadow);
     }
     100% {
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
     }
 }
 
@@ -500,21 +544,53 @@ section.active {
     color: var(--timer-separator-color);
     font-size: 3rem;
     font-weight: 700;
-    margin: 0 0.25rem;
+    margin: 0 4px;
+    opacity: 0.8;
+}
+
+.timer-running .timer-separator {
+    animation: blinkSeparator 1s infinite;
+}
+
+@keyframes blinkSeparator {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.3;
+    }
 }
 
 .earnings-display {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 600;
     display: flex;
-    gap: 1rem;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 0.5rem;
 }
 
-.earnings-separator {
-    font-size: 1rem;
-    opacity: 0.7;
+.earnings-item {
+    text-align: center;
+}
+
+.earnings-label {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.25rem;
+}
+
+.earnings-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+#current-earnings {
+    color: var(--success-color);
+}
+
+#current-deduction {
+    color: var(--primary-color);
 }
 
 .timer-controls {
@@ -527,13 +603,15 @@ section.active {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
     padding: 0.75rem 2rem;
     font-size: 1rem;
     font-weight: 600;
     border: none;
     border-radius: var(--border-radius-md);
     transition: all var(--transition-speed);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 120px;
 }
 
 .start-btn {
@@ -543,7 +621,8 @@ section.active {
 
 .start-btn:hover:not(:disabled) {
     background-color: var(--btn-start-hover);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .stop-btn {
@@ -553,26 +632,30 @@ section.active {
 
 .stop-btn:hover:not(:disabled) {
     background-color: var(--btn-stop-hover);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .timer-btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
     transform: none;
+    box-shadow: none;
 }
 
 .task-selection {
     padding: 1.5rem;
     background-color: var(--card-bg);
-    border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+    border-radius: var(--border-radius-lg);
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
 .task-selection label {
-    font-weight: 600;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    display: block;
     color: var(--text-color);
 }
 
@@ -834,6 +917,7 @@ section.active {
     width: 20px;
     background-color: #eee;
     border-radius: 50%;
+    transition: all var(--transition-speed);
 }
 
 .radio-option:hover input ~ .radio-checkmark {
@@ -1148,6 +1232,59 @@ tbody tr:hover {
     position: relative;
 }
 
+/* Graf - loading a error stavy */
+.chart-loading, .chart-error {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 20;
+    border-radius: var(--border-radius-md);
+    display: none;
+}
+
+.dark-mode .chart-loading, .dark-mode .chart-error {
+    background-color: rgba(34, 40, 49, 0.9);
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.chart-error {
+    color: var(--danger-color);
+}
+
+.chart-error i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.chart-error p {
+    margin-bottom: 1rem;
+}
+
 /* User settings */
 .profile-settings {
     display: grid;
@@ -1253,13 +1390,21 @@ tbody tr:hover {
 
 /* Categories management */
 .categories-management {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
 }
 
 .category-section {
-    flex: 1;
+    margin-bottom: 2rem;
+}
+
+.category-section h4 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .category-section ul {
@@ -1268,6 +1413,8 @@ tbody tr:hover {
     margin-bottom: 1.5rem;
     min-height: 100px;
     border: 1px solid rgba(0, 0, 0, 0.1);
+    max-height: 300px;
+    overflow-y: auto;
 }
 
 .dark-mode .category-section ul {
@@ -1443,17 +1590,17 @@ footer {
 
 /* Responsivní design */
 @media (max-width: 992px) {
-    .timer-digit {
+    .digit {
+        width: 50px;
+        height: 70px;
         font-size: 2.5rem;
-        width: 3rem;
-        height: 4rem;
     }
     
     .timer-separator {
         font-size: 2.5rem;
     }
     
-    .earnings-display {
+    .earnings-value {
         font-size: 1.25rem;
     }
 }
@@ -1495,10 +1642,10 @@ footer {
         gap: 0.5rem;
     }
 
-    .timer-digit {
+    .digit {
+        width: 40px;
+        height: 60px;
         font-size: 2rem;
-        width: 2.5rem;
-        height: 3.5rem;
     }
     
     .timer-separator {
@@ -1506,9 +1653,20 @@ footer {
     }
     
     .earnings-display {
-        font-size: 1.1rem;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 1rem;
+    }
+    
+    .timer-controls {
+        flex-direction: column;
+    }
+    
+    .timer-btn {
+        width: 100%;
+    }
+    
+    .theme-switch-wrapper {
+        right: 70px;
     }
 }
 
@@ -1529,19 +1687,29 @@ footer {
         padding: 1rem;
     }
 
-    .timer-controls {
-        flex-direction: column;
+    .modern-timer-container {
+        padding: 1rem;
     }
 
-    .timer-btn {
-        width: 100%;
+    .digit {
+        width: 30px;
+        height: 46px;
+        font-size: 1.5rem;
     }
-
+    
+    .timer-separator {
+        font-size: 1.5rem;
+    }
+    
     .stats-period-selector {
         flex-wrap: wrap;
     }
     
     .period-btn {
         flex: 1;
+    }
+    
+    .theme-switch-wrapper {
+        right: 60px;
     }
 }
